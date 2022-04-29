@@ -1,0 +1,31 @@
+#Params for AER1516 Project
+
+#Setup Conditions
+setup:
+  use_jps3d: true
+  use_global_mapper_ros: true
+  jps_3d_on_goal_loc: false # False makes jps3d to be on 2DPose click to go mode
+
+########################################################################
+#Params for FASTER
+world_dimensions: [20.0, 20.0, 4.0]  # [m]  16   16   4
+resolution: 0.15  # [m]   0.15
+
+dc: .01            #(seconds) Duration for the interpolation=Value of the timer pubGoal
+goal_radius: 0.3    #[m] Drone has arrived to the goal when distance_to_goal<GOAL_RADIUS
+drone_radius: 0.42  #[m] Used for collision checking
+force_goal_height: true
+goal_height: 1  #[m] Assumed height for clicked 2d nav goals in Rviz  (not used if force_goal_height is true or if it is a ground robot )
+
+Ra: 10.0            # [m] Radius of the sphere S
+max_poly_whole: 6
+
+z_ground: 0.0         #[m] points below this are considered ground
+z_max: 2         #[m] JPS is not allowed to give a solution that goes higher than this height
+inflation_jps: 0.47  #[m] The obstacles are inflated (to run JPS) by this amount
+factor_jps: 1  #[m] JPS is run with resolution=factor_jps*(resolution of the map)
+
+dist_max_vertexes: 1.5 #[m] Maximum distance between two vertexes in the JPS before doing the cvx decomp (more vertexes are added to force this)
+
+use_faster: true  #TODO (this param doesn't work yet) if false, it will plan only in free space
+

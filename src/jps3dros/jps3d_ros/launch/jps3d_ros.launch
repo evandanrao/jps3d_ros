@@ -1,0 +1,11 @@
+<launch>
+	<node name="jps3d" pkg="jps3d_ros" type="jps3d_ros_node" output="screen" clear_params="true"> 
+    <rosparam file="$(find jps3d_ros)/param/params.yaml" command="load"/>
+
+        <!-- Subscriptions -->
+		<remap from="~state" to="/SQ01s/state"/>
+		<remap from="/occup_grid" to="/SQ01s/global_mapper_ros/occupancy_grid"/> <!--PointCloud of the occupancy grid-->
+		<remap from="/unknown_grid" to="/SQ01s/global_mapper_ros/unknown_grid"/> <!--PointCloud of the unknown map-->
+	</node>
+
+</launch>
